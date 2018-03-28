@@ -30,7 +30,7 @@ class ButtonAppBar extends Component {
   }
 
   handleToggle = () => this.setState({open: !this.state.open});
-  handleClose = () => this.setState({open: false});
+ 
 
   render() {
   const { classes } =this.props;
