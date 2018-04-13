@@ -9,14 +9,15 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import { MenuItem } from 'material-ui/Menu';
 import Drawer from 'material-ui/Drawer';
-
+import LoginBox from './LoginBox';
 
 
 const drawerWidth = 240;
 
-const styles =  theme => ( {
+const styles = {
   root: {
     flexGrow: 1,
+
   },
   flex: {
     flex: 1,
@@ -27,12 +28,12 @@ const styles =  theme => ( {
   },
   drawerPaper: {
     width: drawerWidth
-  }
+  },
 
-});
+
+};
 
 class Title1 extends Component{
-
   render(){
       return <main>我是谁？</main>
   }
@@ -50,6 +51,8 @@ class Title3 extends Component{
   }
 }
 
+
+
 class ButtonAppBar extends Component {
   constructor(props) {
     super(props);
@@ -57,9 +60,10 @@ class ButtonAppBar extends Component {
       open: false,
       open1:false,
       open2: false,
-      open3: false
+      open3: false,
     };
   }
+
 
   handleToggle = () => this.setState({open: !this.state.open});
  
@@ -70,7 +74,7 @@ class ButtonAppBar extends Component {
   handleClick3 = () => this.setState({open3: !this.state.open3});
 
   render() {
-  const { classes } =this.props;
+    const { classes } =this.props;
   if(!this.state.open1&&!this.state.open2&&!this.state.open3){
   return (
     <div className={classes.root}>
@@ -86,17 +90,19 @@ class ButtonAppBar extends Component {
         </Toolbar>
       </AppBar>
       <Drawer classes={{ paper: classes.drawerPaper}} open={this.state.open} onClose={this.handleToggle} >
-          <MenuItem onClick={this.handleClick1}> 功能1 </MenuItem>
+          <MenuItem onClick={this.handleClick1}> 登陆 </MenuItem>
           <MenuItem onClick={this.handleClick2}> 功能2 </MenuItem>
           <MenuItem onClick={this.handleClick3}> 功能3 </MenuItem>
         </Drawer>
+        <LoginBox/>
+
     </div>
   );
 }
 else {
   if(this.state.open1)
 {
-  return <Title1 /> ;
+  return <Title1/> ;
 }
   if(this.state.open2)
 {
@@ -113,4 +119,4 @@ else {
 ButtonAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
-export default withStyles(styles)(ButtonAppBar);
+export default  withStyles(styles)(ButtonAppBar);
